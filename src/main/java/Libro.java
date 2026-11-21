@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Libro {
 
     private String titulo;
@@ -22,9 +24,6 @@ public class Libro {
     }
 
     public void prestar() {
-        // Problema 2: salida directa por consola.
-        System.out.println("Prestando libro: " + titulo);
-
         if (!disponible) {
             throw new IllegalStateException(
                 "Libro no disponible"
@@ -36,21 +35,9 @@ public class Libro {
 
     public void devolver() {
         disponible = true;
-
-        // Problema 3: manejo incorrecto de excepción.
-        try {
-            Integer.parseInt("ABC");
-        } catch (NumberFormatException e) {
-            // Bloque vacío intencional.
-        }
     }
 
     public boolean esMismoTitulo(String otroTitulo) {
-        // Problema 4: comparación de referencias.
-        return titulo == otroTitulo;
-    }
-
-    // Problema 5: método privado nunca utilizado.
-    private void registrarAuditoriaInterna() {
+        return Objects.equals(titulo, otroTitulo);
     }
 }
